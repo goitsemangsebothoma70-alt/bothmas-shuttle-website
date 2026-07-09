@@ -18,20 +18,25 @@
             color: var(--dark-text);
         }
         header {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 20px;
+            background-color: white;
+            padding: 15px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--primary-blue);
         }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
+        .logo-container img {
+            max-width: 180px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
         header p {
-            margin: 5px 0 0 0;
+            margin: 8px 0 0 0;
             font-size: 14px;
-            opacity: 0.9;
+            color: var(--primary-blue);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         .container {
             max-width: 1000px;
@@ -98,7 +103,9 @@
 <body>
 
     <header>
-        <h1>BOTHMAS SHUTTLE</h1>
+        <div class="logo-container">
+            <img src="ChatGPT Image Jul 6, 2026, 12_40_50 AM.png" alt="Bothmas Shuttle Logo">
+        </div>
         <p>Live Trip Tracking Dashboard</p>
     </header>
 
