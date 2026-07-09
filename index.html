@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bothmas Shuttle - Trip Tracker Dashboard</title>
+    <style>
+        :root {
+            --primary-blue: #0A3D7A;
+            --light-blue: #E6F0FA;
+            --dark-text: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: var(--dark-text);
+        }
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+        th {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f9fbfd;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .status.scheduled { background-color: #ffeeba; color: #856404; }
+        .status.en-route { background-color: #b8daff; color: #004085; }
+        .status.completed { background-color: #c3e6cb; color: #155724; }
+        
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr { display: block; }
+            thead tr { position: absolute; top: -9999px; left: -9999px; }
+            tr { border: 1px solid #ccc; margin-bottom: 10px; border-radius: 5px; background: #fff; }
+            td { border: none; border-bottom: 1px solid #eee; position: relative; padding-left: 50%; text-align: right; }
+            td:before { position: absolute; top: 12px; left: 12px; width: 45%; padding-right: 10px; white-space: nowrap; font-weight: bold; text-align: left; }
+            td:nth-of-type(1):before { content: "Trip ID"; }
+            td:nth-of-type(2):before { content: "Driver"; }
+            td:nth-of-type(3):before { content: "Vehicle"; }
+            td:nth-of-type(4):before { content: "Route"; }
+            td:nth-of-type(5):before { content: "Passengers"; }
+            td:nth-of-type(6):before { content: "Status"; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>BOTHMAS SHUTTLE</h1>
+        <p>Live Trip Tracking Dashboard</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Active Shuttle Logs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trip ID</th>
+                        <th>Driver</th>
+                        <th>Vehicle</th>
+                        <th>Route</th>
+                        <th>Passengers</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>#001</strong></td>
+                        <td>John Doe</td>
+                        <td>DZ 12 XY GP</td>
+                        <td>Mandela Village to Pretoria CBD</td>
+                        <td>12 / 15</td>
+                        <td><span class="status scheduled">Scheduled</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#002</strong></td>
+                        <td>Sipho Khumalo</td>
+                        <td>FB 88 LK GP</td>
+                        <td>Hammanskraal to Johannesburg</td>
+                        <td>15 / 15</td>
+                        <td><span class="status en-route">En Route</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
