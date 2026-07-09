@@ -1,0 +1,16 @@
+{
+  "name": "bothmas-shuttle-tracker",
+  "version": "1.0.0",
+  "description": "Trip tracking system for Bothmas Shuttle Service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "shuttle",
+    "tracker",
+    "node"
+  ],
+  "author": "",
+  "license": "ISC"
+}
