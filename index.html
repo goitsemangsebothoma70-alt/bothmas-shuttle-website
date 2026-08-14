@@ -1,149 +1,2610 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bothmas Shuttle - Trip Tracker Dashboard</title>
-    <style>
-        :root {
-            --primary-blue: #0A3D7A;
-            --light-blue: #E6F0FA;
-            --dark-text: #333333;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f9;
-            color: var(--dark-text);
-        }
-        header {
-            background-color: white;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-bottom: 3px solid var(--primary-blue);
-        }
-        .logo-container img {
-            max-width: 180px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        header p {
-            margin: 8px 0 0 0;
-            font-size: 14px;
-            color: var(--primary-blue);
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-        .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: var(--primary-blue);
-            margin-top: 0;
-            border-bottom: 2px solid var(--light-blue);
-            padding-bottom: 8px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #dddddd;
-        }
-        th {
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-        tr:hover {
-            background-color: #f9fbfd;
-        }
-        .status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        .status.scheduled { background-color: #ffeeba; color: #856404; }
-        .status.en-route { background-color: #b8daff; color: #004085; }
-        .status.completed { background-color: #c3e6cb; color: #155724; }
-        
-        @media (max-width: 600px) {
-            table, thead, tbody, th, td, tr { display: block; }
-            thead tr { position: absolute; top: -9999px; left: -9999px; }
-            tr { border: 1px solid #ccc; margin-bottom: 10px; border-radius: 5px; background: #fff; }
-            td { border: none; border-bottom: 1px solid #eee; position: relative; padding-left: 50%; text-align: right; }
-            td:before { position: absolute; top: 12px; left: 12px; width: 45%; padding-right: 10px; white-space: nowrap; font-weight: bold; text-align: left; }
-            td:nth-of-type(1):before { content: "Trip ID"; }
-            td:nth-of-type(2):before { content: "Driver"; }
-            td:nth-of-type(3):before { content: "Vehicle"; }
-            td:nth-of-type(4):before { content: "Route"; }
-            td:nth-of-type(5):before { content: "Passengers"; }
-            td:nth-of-type(6):before { content: "Status"; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bothmas Shuttle</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+:root {
+    --blue: #003f73;
+    --blue2: #0066a8;
+    --light-blue: #eaf5ff;
+    --white: #ffffff;
+    --black: #111111;
+    --gray: #667085;
+    --light: #f5f7fa;
+    --border: #dce3ea;
+    --green: #198754;
+    --red: #dc3545;
+    --orange: #f0ad00;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #eef2f6;
+    color: #222;
+}
+
+.app {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: auto;
+    background: var(--white);
+    position: relative;
+    overflow-x: hidden;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding-bottom: 85px;
+    background: var(--light);
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    background: var(--white);
+    padding: 15px 18px;
+    border-bottom: 3px solid var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.brand h1 {
+    font-size: 18px;
+    color: var(--blue);
+}
+
+.icon-btn {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    color: var(--blue);
+}
+
+/* ================= LOGO ================= */
+
+.logo-large {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* ================= AUTH ================= */
+
+.auth {
+    min-height: 100vh;
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #ffffff, #eaf5ff);
+    text-align: center;
+}
+
+.auth h1 {
+    color: var(--blue);
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.auth p {
+    color: var(--gray);
+    margin-bottom: 25px;
+}
+
+.auth-card {
+    width: 100%;
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.08);
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f5f7fa;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px;
+    margin-bottom: 12px;
+}
+
+.field i {
+    color: var(--blue2);
+    width: 20px;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+}
+
+.field select {
+    color: #333;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--blue);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.btn:hover {
+    background: var(--blue2);
+}
+
+.btn.green {
+    background: var(--green);
+}
+
+.btn.red {
+    background: var(--red);
+}
+
+.btn.orange {
+    background: var(--orange);
+    color: #111;
+}
+
+.link-btn {
+    border: none;
+    background: none;
+    color: var(--blue2);
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ================= HOME ================= */
+
+.hero {
+    margin: 18px;
+    padding: 22px;
+    border-radius: 18px;
+    color: white;
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+}
+
+.hero h2 {
+    margin-bottom: 7px;
+}
+
+.hero p {
+    font-size: 14px;
+    opacity: .9;
+}
+
+.section-title {
+    padding: 10px 18px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 18px 18px;
+}
+
+.tile {
+    background: white;
+    padding: 20px 10px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.tile i {
+    font-size: 25px;
+    color: var(--blue2);
+    margin-bottom: 10px;
+}
+
+.tile span {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ================= FORMS ================= */
+
+.form-container {
+    padding: 20px;
+}
+
+.form-title {
+    color: var(--blue);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+    background: white;
+    margin: 12px 18px;
+    padding: 18px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: 0 3px 10px rgba(0,0,0,.03);
+}
+
+.card-title {
+    color: var(--blue);
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 9px 0;
+    border-bottom: 1px solid #edf0f3;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row strong {
+    color: #333;
+}
+
+.row span {
+    text-align: right;
+    color: #555;
+}
+
+/* ================= STATUS ================= */
+
+.status {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status.scheduled {
+    background: #fff0b3;
+    color: #806000;
+}
+
+.status.enroute {
+    background: #cfe8ff;
+    color: #005b9f;
+}
+
+.status.completed {
+    background: #d7f5df;
+    color: #146c2e;
+}
+
+/* ================= DRIVER ================= */
+
+.driver-header {
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+    color: white;
+    padding: 25px 18px;
+}
+
+.driver-header h2 {
+    margin-bottom: 5px;
+}
+
+.driver-header p {
+    opacity: .9;
+    font-size: 14px;
+}
+
+.driver-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 18px;
+}
+
+.driver-action {
+    background: white;
+    padding: 20px 10px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.driver-action i {
+    font-size: 25px;
+    color: var(--blue2);
+    margin-bottom: 8px;
+}
+
+.driver-action strong {
+    display: block;
+}
+
+/* ================= TRIP ================= */
+
+.trip-box {
+    background: white;
+    margin: 18px;
+    padding: 18px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.trip-id {
+    font-size: 22px;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.map {
+    height: 260px;
+    margin: 18px;
+    border-radius: 15px;
+    overflow: hidden;
+    background:
+        linear-gradient(45deg, #e8edf2 25%, transparent 25%),
+        linear-gradient(-45deg, #e8edf2 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e8edf2 75%),
+        linear-gradient(-45deg, transparent 75%, #e8edf2 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+    position: relative;
+}
+
+.map-road {
+    position: absolute;
+    width: 75%;
+    height: 8px;
+    background: var(--blue2);
+    transform: rotate(-25deg);
+    left: 12%;
+    top: 50%;
+    border-radius: 20px;
+}
+
+.map-car {
+    position: absolute;
+    left: 52%;
+    top: 43%;
+    width: 50px;
+    height: 50px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid white;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    height: 70px;
+    background: white;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-btn {
+    border: none;
+    background: none;
+    color: #777;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-btn i {
+    font-size: 20px;
+}
+
+.nav-btn.active {
+    color: var(--blue);
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard-title {
+    padding: 20px 18px 5px;
+}
+
+.dashboard-title h2 {
+    color: var(--blue);
+    font-size: 26px;
+}
+
+.dashboard-title p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--gray);
+}
+
+.empty i {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (min-width: 600px) {
+    .app {
+        box-shadow: 0 0 30px rgba(0,0,0,.1);
+    }
+}
+
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="ChatGPT Image Jul 6, 2026, 12_40_50 AM.png" alt="Bothmas Shuttle Logo">
-        </div>
-        <p>Live Trip Tracking Dashboard</p>
-    </header>
+<div class="app">
 
-    <div class="container">
-        <div class="card">
-            <h2>Active Shuttle Logs</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Trip ID</th>
-                        <th>Driver</th>
-                        <th>Vehicle</th>
-                        <th>Route</th>
-                        <th>Passengers</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>#001</strong></td>
-                        <td>John Doe</td>
-                        <td>DZ 12 XY GP</td>
-                        <td>Mandela Village to Pretoria CBD</td>
-                        <td>12 / 15</td>
-                        <td><span class="status scheduled">Scheduled</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>#002</strong></td>
-                        <td>Sipho Khumalo</td>
-                        <td>FB 88 LK GP</td>
-                        <td>Hammanskraal to Johannesburg</td>
-                        <td>15 / 15</td>
-                        <td><span class="status en-route">En Route</span></td>
-                    </tr>
-                </tbody>
-            </table>
+<!-- ================================================= -->
+<!-- PASSENGER LOGIN -->
+<!-- ================================================= -->
+
+<section id="loginScreen" class="screen active">
+
+<div class="auth">
+
+<img src="logo.png"
+     class="logo-large"
+     alt="Bothmas Shuttle Logo">
+
+<h1>Bothmas Shuttle</h1>
+
+<p>Safe • Reliable • Comfortable</p>
+
+<div class="auth-card">
+
+<div class="field">
+<i class="fa-solid fa-phone"></i>
+<input id="loginPhone"
+       type="tel"
+       placeholder="Phone Number">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-lock"></i>
+<input id="loginPassword"
+       type="password"
+       placeholder="Password">
+</div>
+
+<button class="btn" onclick="passengerLogin()">
+<i class="fa-solid fa-right-to-bracket"></i>
+&nbsp; Passenger Login
+</button>
+
+<button class="link-btn"
+onclick="showScreen('passengerRegisterScreen')">
+Create Passenger Account
+</button>
+
+<hr style="margin:20px 0;border:0;border-top:1px solid #ddd">
+
+<button class="btn green"
+onclick="showScreen('driverLoginScreen')">
+<i class="fa-solid fa-steering-wheel"></i>
+&nbsp; Driver Portal
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- PASSENGER REGISTER -->
+<!-- ================================================= -->
+
+<section id="passengerRegisterScreen" class="screen">
+
+<div class="auth">
+
+<img src="logo.png"
+class="logo-large"
+alt="Bothmas Shuttle Logo">
+
+<h1>Create Account</h1>
+
+<p>Register as a Bothmas Shuttle passenger</p>
+
+<div class="auth-card">
+
+<div class="field">
+<i class="fa-solid fa-user"></i>
+<input id="passengerName"
+placeholder="Full Name">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-phone"></i>
+<input id="passengerPhone"
+placeholder="Phone Number">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-lock"></i>
+<input id="passengerPassword"
+type="password"
+placeholder="Create Password">
+</div>
+
+<button class="btn"
+onclick="registerPassenger()">
+Create Account
+</button>
+
+<button class="link-btn"
+onclick="showScreen('loginScreen')">
+Already have an account? Login
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- DRIVER LOGIN -->
+<!-- ================================================= -->
+
+<section id="driverLoginScreen" class="screen">
+
+<div class="auth">
+
+<img src="logo.png"
+class="logo-large"
+alt="Bothmas Shuttle Logo">
+
+<h1>Driver Portal</h1>
+
+<p>Manage your Bothmas Shuttle trips</p>
+
+<div class="auth-card">
+
+<div class="field">
+<i class="fa-solid fa-phone"></i>
+<input id="driverLoginPhone"
+placeholder="Driver Phone Number">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-lock"></i>
+<input id="driverLoginPassword"
+type="password"
+placeholder="Password">
+</div>
+
+<button class="btn green"
+onclick="driverLogin()">
+Driver Login
+</button>
+
+<button class="link-btn"
+onclick="showScreen('driverRegisterScreen')">
+Register as a Driver
+</button>
+
+<button class="link-btn"
+onclick="showScreen('loginScreen')">
+Back to Passenger Login
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- DRIVER REGISTRATION -->
+<!-- ================================================= -->
+
+<section id="driverRegisterScreen" class="screen">
+
+<div class="auth">
+
+<img src="logo.png"
+class="logo-large"
+alt="Bothmas Shuttle Logo">
+
+<h1>Driver Registration</h1>
+
+<p>Register your details and vehicle</p>
+
+<div class="auth-card">
+
+<div class="field">
+<i class="fa-solid fa-user"></i>
+<input id="driverName"
+placeholder="Full Name">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-phone"></i>
+<input id="driverPhone"
+placeholder="Phone Number">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-id-card"></i>
+<input id="driverId"
+placeholder="ID / Driver Licence Number">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-lock"></i>
+<input id="driverPassword"
+type="password"
+placeholder="Create Password">
+</div>
+
+<h3 style="text-align:left;color:#003f73;margin:20px 0 10px">
+Vehicle Details
+</h3>
+
+<div class="field">
+<i class="fa-solid fa-car"></i>
+<input id="vehicleReg"
+placeholder="Vehicle Registration">
+</div>
+
+<div class="field">
+<i class="fa-solid fa-van-shuttle"></i>
+
+<select id="vehicleType">
+
+<option value="">
+Select Vehicle Type
+</option>
+
+<option value="Sedan">
+Sedan
+</option>
+
+<option value="Minibus">
+Minibus
+</option>
+
+<option value="Toyota Quantum">
+Toyota Quantum
+</option>
+
+<option value="Shuttle Van">
+Shuttle Van
+</option>
+
+<option value="Bus">
+Bus
+</option>
+
+</select>
+
+</div>
+
+<button class="btn green"
+onclick="registerDriver()">
+<i class="fa-solid fa-user-check"></i>
+&nbsp; Register Driver
+</button>
+
+<button class="link-btn"
+onclick="showScreen('driverLoginScreen')">
+Already registered? Driver Login
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- PASSENGER HOME -->
+<!-- ================================================= -->
+
+<section id="homeScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png"
+alt="Bothmas Shuttle Logo">
+
+<h1>Bothmas Shuttle</h1>
+
+</div>
+
+<button class="icon-btn"
+onclick="showScreen('notificationsScreen')">
+
+<i class="fa-solid fa-bell"></i>
+
+</button>
+
+</header>
+
+
+<div class="hero">
+
+<h2 id="welcomePassenger">
+Welcome to Bothmas Shuttle
+</h2>
+
+<p>
+Where would you like to go today?
+</p>
+
+</div>
+
+
+<div class="section-title">
+Quick Services
+</div>
+
+<div class="grid">
+
+<div class="tile"
+onclick="showScreen('bookScreen')">
+
+<i class="fa-solid fa-car"></i>
+
+<span>Book a Ride</span>
+
+</div>
+
+
+<div class="tile"
+onclick="showScreen('dashboardScreen')">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<span>Live Trips</span>
+
+</div>
+
+
+<div class="tile"
+onclick="showScreen('tripsScreen')">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+<span>My Trips</span>
+
+</div>
+
+
+<div class="tile"
+onclick="showScreen('profileScreen')">
+
+<i class="fa-solid fa-user"></i>
+
+<span>My Profile</span>
+
+</div>
+
+</div>
+
+
+<div class="section-title">
+Why Bothmas Shuttle?
+</div>
+
+<div class="card">
+
+<div class="row">
+<strong>
+<i class="fa-solid fa-shield-halved"></i>
+Safety
+</strong>
+
+<span>Reliable drivers</span>
+</div>
+
+<div class="row">
+<strong>
+<i class="fa-solid fa-location-dot"></i>
+Tracking
+</strong>
+
+<span>Live trip information</span>
+</div>
+
+<div class="row">
+<strong>
+<i class="fa-solid fa-clock"></i>
+Reliable
+</strong>
+
+<span>On-time transportation</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- BOOK RIDE -->
+<!-- ================================================= -->
+
+<section id="bookScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>Book a Ride</h1>
+
+</div>
+
+<button class="icon-btn"
+onclick="showScreen('homeScreen')">
+
+<i class="fa-solid fa-xmark"></i>
+
+</button>
+
+</header>
+
+
+<div class="form-container">
+
+<h2 class="form-title">
+Request a Shuttle
+</h2>
+
+<p class="form-subtitle">
+Enter your pickup and destination.
+</p>
+
+
+<div class="field">
+
+<i class="fa-solid fa-circle-dot"
+style="color:#dc3545"></i>
+
+<input id="pickup"
+placeholder="Pickup Location"
+value="Mandela Village">
+
+</div>
+
+
+<div class="field">
+
+<i class="fa-solid fa-location-dot"
+style="color:#198754"></i>
+
+<input id="destination"
+placeholder="Destination"
+value="Pretoria CBD">
+
+</div>
+
+
+<div class="field">
+
+<i class="fa-solid fa-users"></i>
+
+<input id="passengerCount"
+type="number"
+min="1"
+value="1"
+placeholder="Number of passengers">
+
+</div>
+
+
+<div class="field">
+
+<i class="fa-solid fa-credit-card"></i>
+
+<select id="payment">
+
+<option>Cash</option>
+<option>Card</option>
+<option>Instant EFT</option>
+<option>Bothmas Wallet</option>
+
+</select>
+
+</div>
+
+
+<button class="btn"
+onclick="requestRide()">
+
+<i class="fa-solid fa-car"></i>
+&nbsp; Request Shuttle
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- LIVE DASHBOARD -->
+<!-- ================================================= -->
+
+<section id="dashboardScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>Live Trip Tracking</h1>
+
+</div>
+
+</header>
+
+
+<div class="dashboard-title">
+
+<h2>Active Shuttle Logs</h2>
+
+<p>
+Live trips currently registered by Bothmas drivers.
+</p>
+
+</div>
+
+
+<div id="dashboardTrips"></div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- DRIVER DASHBOARD -->
+<!-- ================================================= -->
+
+<section id="driverDashboardScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>Driver Portal</h1>
+
+</div>
+
+<button class="icon-btn"
+onclick="driverLogout()">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+</button>
+
+</header>
+
+
+<div class="driver-header">
+
+<h2 id="driverWelcome">
+Welcome Driver
+</h2>
+
+<p>
+Manage your vehicle and shuttle trips.
+</p>
+
+</div>
+
+
+<div class="driver-actions">
+
+<div class="driver-action"
+onclick="showScreen('createTripScreen')">
+
+<i class="fa-solid fa-route"></i>
+
+<strong>
+Start New Trip
+</strong>
+
+</div>
+
+
+<div class="driver-action"
+onclick="showScreen('driverProfileScreen')">
+
+<i class="fa-solid fa-user"></i>
+
+<strong>
+My Details
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="section-title">
+My Current Trip
+</div>
+
+<div id="driverCurrentTrip"></div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- CREATE TRIP -->
+<!-- ================================================= -->
+
+<section id="createTripScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>Create Trip</h1>
+
+</div>
+
+<button class="icon-btn"
+onclick="showScreen('driverDashboardScreen')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+</header>
+
+
+<div class="form-container">
+
+<h2 class="form-title">
+Start Shuttle Trip
+</h2>
+
+<p class="form-subtitle">
+Your registered driver details will automatically be attached to this trip.
+</p>
+
+
+<div class="field">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<input id="tripPickup"
+placeholder="Starting Location">
+
+</div>
+
+
+<div class="field">
+
+<i class="fa-solid fa-flag-checkered"></i>
+
+<input id="tripDestination"
+placeholder="Destination">
+
+</div>
+
+
+<div class="field">
+
+<i class="fa-solid fa-users"></i>
+
+<input id="tripPassengers"
+type="number"
+min="0"
+placeholder="Passengers">
+
+</div>
+
+
+<button class="btn green"
+onclick="createTrip()">
+
+<i class="fa-solid fa-play"></i>
+&nbsp; Start Trip
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- DRIVER PROFILE -->
+<!-- ================================================= -->
+
+<section id="driverProfileScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>Driver Profile</h1>
+
+</div>
+
+<button class="icon-btn"
+onclick="showScreen('driverDashboardScreen')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</button>
+
+</header>
+
+
+<div id="driverProfileContent"></div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- MY TRIPS -->
+<!-- ================================================= -->
+
+<section id="tripsScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>My Trips</h1>
+
+</div>
+
+</header>
+
+
+<div id="myTrips"></div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- NOTIFICATIONS -->
+<!-- ================================================= -->
+
+<section id="notificationsScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>Notifications</h1>
+
+</div>
+
+</header>
+
+
+<div class="card">
+
+<h3 class="card-title">
+Welcome to Bothmas Shuttle
+</h3>
+
+<p style="color:#667085">
+Your shuttle notifications will appear here.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- PASSENGER PROFILE -->
+<!-- ================================================= -->
+
+<section id="profileScreen" class="screen">
+
+<header class="header">
+
+<div class="brand">
+
+<img src="logo.png">
+
+<h1>My Profile</h1>
+
+</div>
+
+</header>
+
+
+<div id="passengerProfile"></div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- BOTTOM NAV -->
+<!-- ================================================= -->
+
+<nav class="bottom-nav" id="passengerNav">
+
+<button class="nav-btn active"
+onclick="navTo('homeScreen',this)">
+
+<i class="fa-solid fa-house"></i>
+Home
+
+</button>
+
+
+<button class="nav-btn"
+onclick="navTo('bookScreen',this)">
+
+<i class="fa-solid fa-car"></i>
+Book
+
+</button>
+
+
+<button class="nav-btn"
+onclick="navTo('dashboardScreen',this)">
+
+<i class="fa-solid fa-location-dot"></i>
+Live
+
+</button>
+
+
+<button class="nav-btn"
+onclick="navTo('tripsScreen',this)">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+Trips
+
+</button>
+
+
+<button class="nav-btn"
+onclick="navTo('profileScreen',this)">
+
+<i class="fa-solid fa-user"></i>
+Profile
+
+</button>
+
+</nav>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DATA STORAGE
+===================================================== */
+
+let currentPassenger = null;
+let currentDriver = null;
+
+let drivers =
+JSON.parse(localStorage.getItem("bothmasDrivers")) || [];
+
+let passengers =
+JSON.parse(localStorage.getItem("bothmasPassengers")) || [];
+
+let trips =
+JSON.parse(localStorage.getItem("bothmasTrips")) || [];
+
+
+/* =====================================================
+   SCREEN MANAGEMENT
+===================================================== */
+
+function showScreen(id) {
+
+    document.querySelectorAll(".screen")
+    .forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    const screen = document.getElementById(id);
+
+    if (screen) {
+        screen.classList.add("active");
+    }
+
+    const passengerScreens = [
+        "homeScreen",
+        "bookScreen",
+        "dashboardScreen",
+        "tripsScreen",
+        "notificationsScreen",
+        "profileScreen"
+    ];
+
+    if (passengerScreens.includes(id)) {
+
+        document.getElementById("passengerNav")
+        .style.display = "flex";
+
+    } else {
+
+        document.getElementById("passengerNav")
+        .style.display = "none";
+
+    }
+
+    if (id === "dashboardScreen") {
+        renderDashboard();
+    }
+
+    if (id === "driverDashboardScreen") {
+        renderDriverDashboard();
+    }
+
+    if (id === "driverProfileScreen") {
+        renderDriverProfile();
+    }
+
+    if (id === "tripsScreen") {
+        renderMyTrips();
+    }
+
+    if (id === "profileScreen") {
+        renderPassengerProfile();
+    }
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function navTo(id, button) {
+
+    document.querySelectorAll(".nav-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    showScreen(id);
+}
+
+
+/* =====================================================
+   PASSENGER REGISTRATION
+===================================================== */
+
+function registerPassenger() {
+
+    const name =
+        document.getElementById("passengerName").value.trim();
+
+    const phone =
+        document.getElementById("passengerPhone").value.trim();
+
+    const password =
+        document.getElementById("passengerPassword").value;
+
+    if (!name || !phone || !password) {
+
+        alert("Please complete all passenger registration fields.");
+
+        return;
+    }
+
+    const exists =
+        passengers.find(p => p.phone === phone);
+
+    if (exists) {
+
+        alert("A passenger with this phone number already exists.");
+
+        return;
+    }
+
+    const passenger = {
+
+        id: "P-" + Date.now(),
+
+        name: name,
+
+        phone: phone,
+
+        password: password,
+
+        createdAt: new Date().toISOString()
+
+    };
+
+    passengers.push(passenger);
+
+    localStorage.setItem(
+        "bothmasPassengers",
+        JSON.stringify(passengers)
+    );
+
+    currentPassenger = passenger;
+
+    alert("Passenger account created successfully!");
+
+    updatePassengerHome();
+
+    showScreen("homeScreen");
+}
+
+
+/* =====================================================
+   PASSENGER LOGIN
+===================================================== */
+
+function passengerLogin() {
+
+    const phone =
+        document.getElementById("loginPhone").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const passenger =
+        passengers.find(
+            p => p.phone === phone &&
+                 p.password === password
+        );
+
+    if (!passenger) {
+
+        alert(
+            "Passenger account not found.\n\nPlease register first."
+        );
+
+        return;
+    }
+
+    currentPassenger = passenger;
+
+    updatePassengerHome();
+
+    showScreen("homeScreen");
+}
+
+
+/* =====================================================
+   PASSENGER HOME
+===================================================== */
+
+function updatePassengerHome() {
+
+    if (!currentPassenger) return;
+
+    document.getElementById("welcomePassenger")
+    .innerText =
+    "Welcome, " + currentPassenger.name + "!";
+
+}
+
+
+/* =====================================================
+   DRIVER REGISTRATION
+===================================================== */
+
+function registerDriver() {
+
+    const name =
+        document.getElementById("driverName").value.trim();
+
+    const phone =
+        document.getElementById("driverPhone").value.trim();
+
+    const idNumber =
+        document.getElementById("driverId").value.trim();
+
+    const password =
+        document.getElementById("driverPassword").value;
+
+    const vehicleReg =
+        document.getElementById("vehicleReg").value.trim();
+
+    const vehicleType =
+        document.getElementById("vehicleType").value;
+
+
+    if (
+        !name ||
+        !phone ||
+        !idNumber ||
+        !password ||
+        !vehicleReg ||
+        !vehicleType
+    ) {
+
+        alert(
+            "Please complete all driver and vehicle details."
+        );
+
+        return;
+    }
+
+
+    const exists =
+        drivers.find(d => d.phone === phone);
+
+
+    if (exists) {
+
+        alert(
+            "A driver with this phone number is already registered."
+        );
+
+        return;
+    }
+
+
+    const driver = {
+
+        id: "DRV-" + Date.now(),
+
+        name: name,
+
+        phone: phone,
+
+        idNumber: idNumber,
+
+        password: password,
+
+        vehicleReg: vehicleReg,
+
+        vehicleType: vehicleType,
+
+        status: "Available",
+
+        registeredAt: new Date().toISOString()
+
+    };
+
+
+    drivers.push(driver);
+
+
+    localStorage.setItem(
+        "bothmasDrivers",
+        JSON.stringify(drivers)
+    );
+
+
+    currentDriver = driver;
+
+
+    alert(
+        "Driver registration successful!\n\nWelcome " +
+        driver.name +
+        "."
+    );
+
+
+    showScreen("driverDashboardScreen");
+
+    renderDriverDashboard();
+}
+
+
+/* =====================================================
+   DRIVER LOGIN
+===================================================== */
+
+function driverLogin() {
+
+    const phone =
+        document.getElementById("driverLoginPhone")
+        .value.trim();
+
+    const password =
+        document.getElementById("driverLoginPassword")
+        .value;
+
+
+    const driver =
+        drivers.find(
+            d =>
+            d.phone === phone &&
+            d.password === password
+        );
+
+
+    if (!driver) {
+
+        alert(
+            "Driver account not found or password incorrect."
+        );
+
+        return;
+    }
+
+
+    currentDriver = driver;
+
+
+    document.getElementById("driverWelcome")
+    .innerText =
+    "Welcome, " + driver.name;
+
+
+    showScreen("driverDashboardScreen");
+
+    renderDriverDashboard();
+}
+
+
+/* =====================================================
+   CREATE DRIVER TRIP
+===================================================== */
+
+function createTrip() {
+
+    if (!currentDriver) {
+
+        alert("Please login as a driver first.");
+
+        return;
+    }
+
+
+    const pickup =
+        document.getElementById("tripPickup")
+        .value.trim();
+
+    const destination =
+        document.getElementById("tripDestination")
+        .value.trim();
+
+    const passengers =
+        document.getElementById("tripPassengers")
+        .value;
+
+
+    if (!pickup || !destination) {
+
+        alert(
+            "Please enter the starting location and destination."
+        );
+
+        return;
+    }
+
+
+    const tripNumber =
+        trips.length + 1;
+
+
+    const trip = {
+
+        id:
+        "#" +
+        String(tripNumber).padStart(3, "0"),
+
+        driverId:
+        currentDriver.id,
+
+        driverName:
+        currentDriver.name,
+
+        vehicleReg:
+        currentDriver.vehicleReg,
+
+        vehicleType:
+        currentDriver.vehicleType,
+
+        pickup:
+        pickup,
+
+        destination:
+        destination,
+
+        passengers:
+        Number(passengers) || 0,
+
+        capacity:
+        currentDriver.vehicleType === "Bus"
+        ? 40
+        : 15,
+
+        status:
+        "En Route",
+
+        createdAt:
+        new Date().toISOString()
+
+    };
+
+
+    trips.push(trip);
+
+
+    localStorage.setItem(
+        "bothmasTrips",
+        JSON.stringify(trips)
+    );
+
+
+    currentDriver.status =
+    "On Trip";
+
+
+    updateDriver();
+
+
+    alert(
+        "Trip " +
+        trip.id +
+        " has been started successfully!"
+    );
+
+
+    document.getElementById("tripPickup").value = "";
+
+    document.getElementById("tripDestination").value = "";
+
+    document.getElementById("tripPassengers").value = "";
+
+
+    showScreen("driverDashboardScreen");
+
+    renderDriverDashboard();
+
+}
+
+
+/* =====================================================
+   UPDATE DRIVER
+===================================================== */
+
+function updateDriver() {
+
+    const index =
+        drivers.findIndex(
+            d => d.id === currentDriver.id
+        );
+
+    if (index !== -1) {
+
+        drivers[index] =
+        currentDriver;
+
+        localStorage.setItem(
+            "bothmasDrivers",
+            JSON.stringify(drivers)
+        );
+    }
+}
+
+
+/* =====================================================
+   DRIVER DASHBOARD
+===================================================== */
+
+function renderDriverDashboard() {
+
+    if (!currentDriver) return;
+
+
+    document.getElementById("driverWelcome")
+    .innerText =
+    "Welcome, " + currentDriver.name;
+
+
+    const container =
+        document.getElementById("driverCurrentTrip");
+
+
+    const trip =
+        trips.find(
+            t =>
+            t.driverId === currentDriver.id &&
+            t.status !== "Completed"
+        );
+
+
+    if (!trip) {
+
+        container.innerHTML = `
+
+        <div class="empty">
+
+            <i class="fa-solid fa-route"></i>
+
+            <h3>No Active Trip</h3>
+
+            <p>
+            You currently have no active shuttle trip.
+            </p>
+
+            <button class="btn"
+            onclick="showScreen('createTripScreen')">
+
+            Start a Trip
+
+            </button>
+
         </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = `
+
+    <div class="card">
+
+        <div class="trip-id">
+            Trip ${trip.id}
+        </div>
+
+        <div class="row">
+            <strong>Driver</strong>
+            <span>${trip.driverName}</span>
+        </div>
+
+        <div class="row">
+            <strong>Vehicle</strong>
+            <span>
+                ${trip.vehicleType}
+                <br>
+                ${trip.vehicleReg}
+            </span>
+        </div>
+
+        <div class="row">
+            <strong>Route</strong>
+            <span>
+                ${trip.pickup}
+                →
+                ${trip.destination}
+            </span>
+        </div>
+
+        <div class="row">
+            <strong>Passengers</strong>
+            <span>
+                ${trip.passengers}/${trip.capacity}
+            </span>
+        </div>
+
+        <div class="row">
+            <strong>Status</strong>
+            <span class="status enroute">
+                ${trip.status}
+            </span>
+        </div>
+
+        <button class="btn red"
+        onclick="completeTrip('${trip.id}')">
+
+        <i class="fa-solid fa-flag-checkered"></i>
+        &nbsp; Complete Trip
+
+        </button>
+
     </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   COMPLETE TRIP
+===================================================== */
+
+function completeTrip(tripId) {
+
+    const trip =
+        trips.find(t => t.id === tripId);
+
+
+    if (!trip) return;
+
+
+    trip.status =
+        "Completed";
+
+
+    localStorage.setItem(
+        "bothmasTrips",
+        JSON.stringify(trips)
+    );
+
+
+    currentDriver.status =
+        "Available";
+
+
+    updateDriver();
+
+
+    alert(
+        "Trip " +
+        tripId +
+        " has been completed."
+    );
+
+
+    renderDriverDashboard();
+
+}
+
+
+/* =====================================================
+   LIVE DASHBOARD
+===================================================== */
+
+function renderDashboard() {
+
+    const container =
+        document.getElementById("dashboardTrips");
+
+
+    const activeTrips =
+        trips.filter(
+            t => t.status !== "Completed"
+        );
+
+
+    if (activeTrips.length === 0) {
+
+        container.innerHTML = `
+
+        <div class="empty">
+
+            <i class="fa-solid fa-van-shuttle"></i>
+
+            <h3>No Active Shuttle Trips</h3>
+
+            <p>
+            Active driver trips will appear here.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    activeTrips.forEach(trip => {
+
+        const card =
+        document.createElement("div");
+
+        card.className = "card";
+
+
+        card.innerHTML = `
+
+        <div class="trip-id">
+            Trip ID ${trip.id}
+        </div>
+
+        <div class="row">
+
+            <strong>
+            Driver
+            </strong>
+
+            <span>
+            ${trip.driverName}
+            </span>
+
+        </div>
+
+        <div class="row">
+
+            <strong>
+            Vehicle
+            </strong>
+
+            <span>
+            ${trip.vehicleType}
+            <br>
+            ${trip.vehicleReg}
+            </span>
+
+        </div>
+
+        <div class="row">
+
+            <strong>
+            Route
+            </strong>
+
+            <span>
+            ${trip.pickup}
+            <br>
+            ↓
+            <br>
+            ${trip.destination}
+            </span>
+
+        </div>
+
+        <div class="row">
+
+            <strong>
+            Passengers
+            </strong>
+
+            <span>
+            ${trip.passengers}/${trip.capacity}
+            </span>
+
+        </div>
+
+        <div class="row">
+
+            <strong>
+            Status
+            </strong>
+
+            <span class="status enroute">
+            ${trip.status}
+            </span>
+
+        </div>
+
+        <div class="map"
+        style="height:160px;margin:15px 0 0">
+
+            <div class="map-road"></div>
+
+            <div class="map-car">
+
+                <i class="fa-solid fa-van-shuttle"></i>
+
+            </div>
+
+        </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   DRIVER PROFILE
+===================================================== */
+
+function renderDriverProfile() {
+
+    const container =
+        document.getElementById(
+            "driverProfileContent"
+        );
+
+
+    if (!currentDriver) return;
+
+
+    container.innerHTML = `
+
+    <div class="card">
+
+        <h2 class="card-title">
+            ${currentDriver.name}
+        </h2>
+
+        <div class="row">
+            <strong>Driver ID</strong>
+            <span>${currentDriver.id}</span>
+        </div>
+
+        <div class="row">
+            <strong>Phone</strong>
+            <span>${currentDriver.phone}</span>
+        </div>
+
+        <div class="row">
+            <strong>Licence / ID</strong>
+            <span>${currentDriver.idNumber}</span>
+        </div>
+
+        <div class="row">
+            <strong>Vehicle Type</strong>
+            <span>${currentDriver.vehicleType}</span>
+        </div>
+
+        <div class="row">
+            <strong>Vehicle Registration</strong>
+            <span>${currentDriver.vehicleReg}</span>
+        </div>
+
+        <div class="row">
+            <strong>Status</strong>
+            <span>${currentDriver.status}</span>
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   PASSENGER BOOKING
+===================================================== */
+
+function requestRide() {
+
+    if (!currentPassenger) {
+
+        alert(
+            "Please login or register before booking."
+        );
+
+        showScreen("loginScreen");
+
+        return;
+    }
+
+
+    const pickup =
+        document.getElementById("pickup")
+        .value.trim();
+
+    const destination =
+        document.getElementById("destination")
+        .value.trim();
+
+    const count =
+        document.getElementById("passengerCount")
+        .value;
+
+
+    if (!pickup || !destination) {
+
+        alert(
+            "Please enter your pickup and destination."
+        );
+
+        return;
+    }
+
+
+    const availableDriver =
+        drivers.find(
+            d => d.status === "Available"
+        );
+
+
+    if (!availableDriver) {
+
+        alert(
+            "No registered drivers are currently available."
+        );
+
+        return;
+    }
+
+
+    const tripNumber =
+        trips.length + 1;
+
+
+    const trip = {
+
+        id:
+        "#" +
+        String(tripNumber).padStart(3, "0"),
+
+        driverId:
+        availableDriver.id,
+
+        driverName:
+        availableDriver.name,
+
+        vehicleReg:
+        availableDriver.vehicleReg,
+
+        vehicleType:
+        availableDriver.vehicleType,
+
+        pickup:
+        pickup,
+
+        destination:
+        destination,
+
+        passengers:
+        Number(count) || 1,
+
+        capacity:
+        availableDriver.vehicleType === "Bus"
+        ? 40
+        : 15,
+
+        status:
+        "Scheduled",
+
+        passengerId:
+        currentPassenger.id,
+
+        createdAt:
+        new Date().toISOString()
+
+    };
+
+
+    trips.push(trip);
+
+
+    localStorage.setItem(
+        "bothmasTrips",
+        JSON.stringify(trips)
+    );
+
+
+    availableDriver.status =
+        "On Trip";
+
+
+    const driverIndex =
+        drivers.findIndex(
+            d => d.id === availableDriver.id
+        );
+
+
+    if (driverIndex !== -1) {
+
+        drivers[driverIndex] =
+            availableDriver;
+
+        localStorage.setItem(
+            "bothmasDrivers",
+            JSON.stringify(drivers)
+        );
+
+    }
+
+
+    alert(
+        "Ride requested successfully!\n\n" +
+        "Driver: " +
+        availableDriver.name +
+        "\nVehicle: " +
+        availableDriver.vehicleReg
+    );
+
+
+    showScreen("dashboardScreen");
+
+    renderDashboard();
+
+}
+
+
+/* =====================================================
+   MY TRIPS
+===================================================== */
+
+function renderMyTrips() {
+
+    const container =
+        document.getElementById("myTrips");
+
+
+    if (!currentPassenger) {
+
+        container.innerHTML = `
+
+        <div class="empty">
+
+            <p>
+            Please login to view your trips.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    const passengerTrips =
+        trips.filter(
+            t =>
+            t.passengerId ===
+            currentPassenger.id
+        );
+
+
+    if (passengerTrips.length === 0) {
+
+        container.innerHTML = `
+
+        <div class="empty">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <h3>No Trips Yet</h3>
+
+            <p>
+            Your completed and upcoming trips will appear here.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    passengerTrips.forEach(trip => {
+
+        container.innerHTML += `
+
+        <div class="card">
+
+            <div class="trip-id">
+            ${trip.id}
+            </div>
+
+            <div class="row">
+                <strong>Driver</strong>
+                <span>${trip.driverName}</span>
+            </div>
+
+            <div class="row">
+                <strong>Route</strong>
+                <span>
+                ${trip.pickup}
+                →
+                ${trip.destination}
+                </span>
+            </div>
+
+            <div class="row">
+                <strong>Vehicle</strong>
+                <span>
+                ${trip.vehicleReg}
+                </span>
+            </div>
+
+            <div class="row">
+                <strong>Status</strong>
+                <span class="status ${
+                    trip.status === "Completed"
+                    ? "completed"
+                    : trip.status === "Scheduled"
+                    ? "scheduled"
+                    : "enroute"
+                }">
+                ${trip.status}
+                </span>
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================================
+   PASSENGER PROFILE
+===================================================== */
+
+function renderPassengerProfile() {
+
+    const container =
+        document.getElementById(
+            "passengerProfile"
+        );
+
+
+    if (!currentPassenger) {
+
+        container.innerHTML = "";
+
+        return;
+    }
+
+
+    container.innerHTML = `
+
+    <div class="card">
+
+        <h2 class="card-title">
+        ${currentPassenger.name}
+        </h2>
+
+        <div class="row">
+            <strong>Passenger ID</strong>
+            <span>
+            ${currentPassenger.id}
+            </span>
+        </div>
+
+        <div class="row">
+            <strong>Phone</strong>
+            <span>
+            ${currentPassenger.phone}
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <button class="btn red"
+        onclick="passengerLogout()">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+        &nbsp; Logout
+
+        </button>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function passengerLogout() {
+
+    currentPassenger = null;
+
+    showScreen("loginScreen");
+
+}
+
+
+function driverLogout() {
+
+    currentDriver = null;
+
+    showScreen("loginScreen");
+
+}
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        renderDashboard();
+
+    }
+);
+
+</script>
 
 </body>
 </html>
