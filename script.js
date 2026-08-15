@@ -21,7 +21,7 @@ registerForm.addEventListener('submit', (e) => {
     const password = document.getElementById('reg-password').value;
     const role = document.getElementById('reg-role').value;
 
-    // Check if an account with this email already exists
+    // Check if user already exists
     const existingUser = localStorage.getItem(email);
     if (existingUser) {
         alert("An account with this email already exists! Please sign in.");
@@ -36,13 +36,13 @@ registerForm.addEventListener('submit', (e) => {
         role: role
     };
 
-    // Save user data using their email as the key
+    // Save to localStorage
     localStorage.setItem(email, JSON.stringify(userData));
 
     alert(`Account successfully created as a ${role.toUpperCase()}! You can now sign in.`);
     
     registerForm.reset();
-    container.classList.remove("active"); // Switch to login view automatically
+    container.classList.remove("active"); // Switch to login view
 });
 
 // Handle Sign In (Verifies data from localStorage)
@@ -67,6 +67,5 @@ loginForm.addEventListener('submit', (e) => {
 
     alert(`Welcome back, ${savedUser.name}! You are logged in as a ${savedUser.role.toUpperCase()}.`);
     
-    // Here you can redirect them or load their dashboard later
     loginForm.reset();
 });
