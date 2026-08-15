@@ -4,1560 +4,681 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bothmas Shuttle | Safe & Reliable Transport</title>
+<title>Bothmas Shuttle</title>
 
-<meta name="description" content="Bothmas Shuttle provides safe, reliable and comfortable passenger transportation services.">
-<meta name="theme-color" content="#063b70">
-
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-/* =========================================================
-   BOTHMAS SHUTTLE
-   MAIN WEBSITE
-   ========================================================= */
 
-:root {
-    --blue: #063b70;
-    --blue-dark: #03294f;
-    --blue-light: #0b65b1;
-    --gold: #f4b942;
-    --white: #ffffff;
-    --light: #f4f7fb;
-    --text: #182333;
-    --muted: #687587;
-    --border: #dce4ee;
-    --green: #1e9d5a;
-    --red: #d64545;
-    --shadow: 0 10px 30px rgba(0, 35, 70, 0.10);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--light);
-    color: var(--text);
-    line-height: 1.6;
-}
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-header {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar {
-    max-width: 1200px;
-    margin: auto;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo img {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-}
-
-.logo-text h1 {
-    color: var(--blue);
-    font-size: 20px;
-}
-
-.logo-text span {
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 22px;
-    align-items: center;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.nav-links a:hover {
-    color: var(--blue-light);
-}
-
-.menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 25px;
-    color: var(--blue);
-    cursor: pointer;
-}
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.btn {
-    border: none;
-    border-radius: 9px;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    transition: 0.2s;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-primary {
-    background: var(--blue);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: var(--blue-light);
-}
-
-.btn-gold {
-    background: var(--gold);
-    color: #17212d;
-}
-
-.btn-light {
-    background: white;
-    color: var(--blue);
-    border: 1px solid var(--border);
-}
-
-.btn-danger {
-    background: var(--red);
-    color: white;
-}
-
-.btn-success {
-    background: var(--green);
-    color: white;
-}
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.hero {
-    min-height: 560px;
-    background:
-        linear-gradient(
-            rgba(3, 41, 79, 0.90),
-            rgba(6, 59, 112, 0.88)
-        );
-    color: white;
-    display: flex;
-    align-items: center;
-}
-
-.hero-content {
-    max-width: 1200px;
-    width: 100%;
-    margin: auto;
-    padding: 70px 20px;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.hero h2 {
-    font-size: clamp(36px, 6vw, 62px);
-    line-height: 1.05;
-    margin-bottom: 20px;
-}
-
-.hero h2 span {
-    color: var(--gold);
-}
-
-.hero p {
-    font-size: 18px;
-    max-width: 600px;
-    color: #e8f0f8;
-    margin-bottom: 28px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.hero-card {
-    background: rgba(255,255,255,0.97);
-    color: var(--text);
-    padding: 28px;
-    border-radius: 18px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-}
-
-.hero-card img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 15px;
-}
-
-.hero-card h3 {
-    color: var(--blue);
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.hero-card p {
-    color: var(--muted);
-    font-size: 14px;
-    text-align: center;
-}
-
-/* =========================================================
-   SECTIONS
-   ========================================================= */
-
-.section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 75px 20px;
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-heading h2 {
-    color: var(--blue);
-    font-size: 32px;
-    margin-bottom: 8px;
-}
-
-.section-heading p {
-    color: var(--muted);
-}
-
-/* =========================================================
-   SERVICES
-   ========================================================= */
-
-.services {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.service {
-    background: white;
-    border-radius: 14px;
-    padding: 28px 20px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    text-align: center;
-}
-
-.service-icon {
-    width: 55px;
-    height: 55px;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    background: #e9f3fc;
-    color: var(--blue);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-}
+/* =========================
+   GENERAL
+========================= */
 
-.service h3 {
-    color: var(--blue);
-    margin-bottom: 8px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-.service p {
-    color: var(--muted);
-    font-size: 14px;
+body{
+    background:#f1f5f9;
+    min-height:100vh;
 }
 
-/* =========================================================
-   ABOUT
-   ========================================================= */
+/* =========================
+   LOGIN CONTAINER
+========================= */
 
-.about {
-    background: white;
+.container{
+    background:#fff;
+    border-radius:30px;
+    box-shadow:0 5px 25px rgba(0,0,0,0.15);
+    position:relative;
+    overflow:hidden;
+    width:900px;
+    max-width:100%;
+    min-height:600px;
+    margin:40px auto;
 }
 
-.about-grid {
-    max-width: 1200px;
-    margin: auto;
-    padding: 75px 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.about img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    display: block;
-    margin: auto;
-}
-
-.about h2 {
-    color: var(--blue);
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.about p {
-    color: var(--muted);
-    margin-bottom: 15px;
-}
-
-/* =========================================================
-   BOOKING
-   ========================================================= */
-
-.booking-area {
-    background: #edf5fc;
-}
-
-.booking-box {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
+/* =========================
+   FORMS
+========================= */
 
-.form-group.full {
-    grid-column: 1 / -1;
+.form-container{
+    position:absolute;
+    top:0;
+    height:100%;
+    transition:all 0.6s ease-in-out;
 }
 
-.form-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: var(--blue);
+.form-container form{
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:100%;
+    padding:0 50px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    background: white;
+.form-container h1{
+    color:#003b70;
+    margin-bottom:10px;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--blue-light);
+.form-container span{
+    font-size:13px;
+    margin:15px 0;
+    color:#666;
 }
 
-textarea {
-    min-height: 100px;
-    resize: vertical;
+.form-container input,
+.form-container select{
+    background:#eee;
+    border:none;
+    margin:8px 0;
+    padding:13px 15px;
+    font-size:14px;
+    border-radius:8px;
+    width:100%;
+    outline:none;
 }
 
-/* =========================================================
-   DRIVER SECTION
-   ========================================================= */
-
-.driver-area {
-    background: white;
-}
-
-.driver-box {
-    max-width: 900px;
-    margin: auto;
-    background: #f8fbff;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 30px;
-}
+.form-container select{
+    color:#555;
+}
+
+.form-container a{
+    color:#555;
+    font-size:13px;
+    text-decoration:none;
+    margin:10px 0;
+}
 
-.driver-box h3 {
-    color: var(--blue);
-    margin-bottom: 10px;
+.form-container button{
+    background:#004d99;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:13px 45px;
+    font-weight:bold;
+    margin-top:15px;
+    cursor:pointer;
 }
 
-.driver-note {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 20px;
+.form-container button:hover{
+    background:#003b70;
 }
 
-/* =========================================================
-   DRIVER LIST
-   ========================================================= */
+/* =========================
+   SIGN IN
+========================= */
 
-.driver-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.sign-in{
+    left:0;
+    width:50%;
+    z-index:2;
 }
 
-.driver-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: var(--shadow);
-}
+/* =========================
+   SIGN UP
+========================= */
 
-.driver-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #e8f2fb;
-    color: var(--blue);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    margin-bottom: 12px;
+.sign-up{
+    left:0;
+    width:50%;
+    opacity:0;
+    z-index:1;
 }
 
-.driver-card h3 {
-    color: var(--blue);
-}
+/* =========================
+   SOCIAL ICONS
+========================= */
 
-.driver-card p {
-    color: var(--muted);
-    font-size: 13px;
+.social-icons{
+    margin:10px 0;
 }
 
-.status {
-    display: inline-block;
-    padding: 4px 9px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: bold;
-    margin-top: 8px;
+.social-icons a{
+    border:1px solid #ddd;
+    border-radius:20%;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    margin:0 3px;
+    width:40px;
+    height:40px;
 }
 
-.status.available {
-    background: #dff5e8;
-    color: #187b43;
-}
+/* =========================
+   TOGGLE
+========================= */
 
-.status.pending {
-    background: #fff1c7;
-    color: #8a6500;
+.toggle-container{
+    position:absolute;
+    top:0;
+    left:50%;
+    width:50%;
+    height:100%;
+    overflow:hidden;
+    transition:all .6s ease-in-out;
+    border-radius:150px 0 0 100px;
+    z-index:1000;
 }
 
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.contact {
-    background: var(--blue);
-    color: white;
+.toggle{
+    background:linear-gradient(135deg,#003b70,#0074c8);
+    height:100%;
+    color:#fff;
+    position:relative;
+    left:-100%;
+    width:200%;
+    transform:translateX(0);
+    transition:all .6s ease-in-out;
 }
 
-.contact .section-heading h2 {
-    color: white;
+.toggle-panel{
+    position:absolute;
+    width:50%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding:0 30px;
+    text-align:center;
+    top:0;
 }
 
-.contact .section-heading p {
-    color: #dceafa;
+.toggle-panel h1{
+    font-size:30px;
+    margin-bottom:15px;
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.toggle-panel p{
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:25px;
 }
 
-.contact-card {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 25px;
-    border-radius: 14px;
-    text-align: center;
+.toggle-left{
+    transform:translateX(-200%);
 }
 
-.contact-card h3 {
-    margin-bottom: 7px;
+.toggle-right{
+    right:0;
 }
 
-.contact-card p {
-    color: #dbe9f7;
+.hidden{
+    background:transparent!important;
+    border:1px solid white!important;
+    color:white!important;
+    padding:12px 35px!important;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+/* =========================
+   ACTIVE ANIMATION
+========================= */
 
-footer {
-    background: var(--blue-dark);
-    color: white;
-    padding: 30px 20px;
-    text-align: center;
+.container.active .sign-in{
+    transform:translateX(100%);
 }
 
-footer img {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-    margin-bottom: 10px;
+.container.active .sign-up{
+    transform:translateX(100%);
+    opacity:1;
+    z-index:5;
 }
 
-footer p {
-    color: #b9cce0;
-    font-size: 13px;
+.container.active .toggle-container{
+    transform:translateX(-100%);
+    border-radius:0 150px 100px 0;
 }
-
-/* =========================================================
-   MODAL
-   ========================================================= */
 
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    z-index: 3000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.container.active .toggle{
+    transform:translateX(50%);
 }
 
-.modal.active {
-    display: flex;
+.container.active .toggle-left{
+    transform:translateX(0);
 }
 
-.modal-box {
-    width: 100%;
-    max-width: 500px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: white;
-    border-radius: 18px;
-    padding: 28px;
-    position: relative;
+.container.active .toggle-right{
+    transform:translateX(200%);
 }
 
-.modal-box h2 {
-    color: var(--blue);
-    margin-bottom: 20px;
-}
+/* =========================
+   LOGO
+========================= */
 
-.close-btn {
-    position: absolute;
-    right: 18px;
-    top: 15px;
-    border: none;
-    background: none;
-    font-size: 25px;
-    cursor: pointer;
-    color: var(--muted);
+.logo{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    margin-bottom:10px;
 }
 
-.auth-tabs {
-    display: flex;
-    gap: 5px;
-    background: #eef3f8;
-    padding: 5px;
-    border-radius: 9px;
-    margin-bottom: 20px;
-}
+/* =========================
+   ROLE SELECTION
+========================= */
 
-.auth-tab {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    border-radius: 7px;
-    background: transparent;
-    cursor: pointer;
-    font-weight: bold;
-    color: var(--muted);
+.role-box{
+    display:flex;
+    width:100%;
+    gap:10px;
+    margin:8px 0;
 }
 
-.auth-tab.active {
-    background: white;
-    color: var(--blue);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+.role{
+    flex:1;
+    border:2px solid #ddd;
+    border-radius:10px;
+    padding:12px 5px;
+    text-align:center;
+    cursor:pointer;
+    font-size:13px;
 }
 
-.auth-form {
-    display: none;
+.role i{
+    display:block;
+    font-size:20px;
+    margin-bottom:5px;
+    color:#004d99;
 }
 
-.auth-form.active {
-    display: block;
+.role.selected{
+    border-color:#004d99;
+    background:#eaf4ff;
 }
 
-/* =========================================================
+/* =========================
    DASHBOARD
-   ========================================================= */
+========================= */
 
-.dashboard {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: var(--light);
-    z-index: 2000;
-    overflow-y: auto;
+.dashboard{
+    display:none;
+    min-height:100vh;
+    background:#f4f7fb;
 }
 
-.dashboard.active {
-    display: block;
+.dashboard.active{
+    display:block;
 }
 
-.dashboard-header {
-    background: var(--blue);
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.dashboard-header{
+    background:#003b70;
+    color:white;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.dashboard-header .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.dashboard-header h2{
+    font-size:20px;
 }
 
-.dashboard-header img {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
+.logout-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-.dashboard-content {
-    max-width: 1100px;
-    margin: auto;
-    padding: 30px 20px;
+.dashboard-content{
+    max-width:1100px;
+    margin:30px auto;
+    padding:20px;
 }
 
-.dashboard-title {
-    margin-bottom: 25px;
+/* =========================
+   CARDS
+========================= */
+
+.welcome-card{
+    background:linear-gradient(135deg,#003b70,#0074c8);
+    color:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
 }
 
-.dashboard-title h2 {
-    color: var(--blue);
+.welcome-card h1{
+    margin-bottom:8px;
 }
 
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 25px;
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.stat {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: var(--shadow);
+.dashboard-card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.stat small {
-    color: var(--muted);
+.dashboard-card i{
+    font-size:30px;
+    color:#0074c8;
+    margin-bottom:15px;
 }
 
-.stat h3 {
-    font-size: 28px;
-    color: var(--blue);
+.dashboard-card h3{
+    margin-bottom:8px;
 }
 
-.dashboard-card {
-    background: white;
-    border-radius: 15px;
-    padding: 22px;
-    border: 1px solid var(--border);
-    margin-bottom: 20px;
+.dashboard-card p{
+    color:#666;
+    font-size:14px;
+    line-height:1.5;
 }
 
-.dashboard-card h3 {
-    color: var(--blue);
-    margin-bottom: 15px;
+/* =========================
+   DRIVER INFO
+========================= */
+
+.driver-info{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    margin-top:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.driver-profile {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 20px;
-    align-items: center;
+.driver-info div{
+    padding:12px 0;
+    border-bottom:1px solid #eee;
 }
 
-.driver-profile-icon {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: #e8f2fb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--blue);
-    font-size: 35px;
+.driver-info div:last-child{
+    border-bottom:none;
 }
 
-/* =========================================================
-   TOAST
-   ========================================================= */
+/* =========================
+   RESPONSIVE
+========================= */
 
-.toast {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: var(--blue-dark);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    z-index: 5000;
-    display: none;
+@media(max-width:768px){
+
+    .container{
+        width:95%;
+        min-height:700px;
+        margin:20px auto;
+    }
+
+    .form-container{
+        width:100%;
+    }
+
+    .sign-in{
+        width:100%;
+    }
+
+    .sign-up{
+        width:100%;
+    }
+
+    .toggle-container{
+        display:none;
+    }
+
+    .container.active .sign-in{
+        display:none;
+    }
+
+    .container.active .sign-up{
+        transform:none;
+        opacity:1;
+    }
+
+    .form-container form{
+        padding:30px;
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
 }
 
-.toast.show {
-    display: block;
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 850px) {
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 20px;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .services {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .driver-list {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 550px) {
-
-    .navbar {
-        padding: 10px 15px;
-    }
-
-    .logo img {
-        width: 45px;
-        height: 45px;
-    }
-
-    .logo-text h1 {
-        font-size: 17px;
-    }
-
-    .hero {
-        min-height: auto;
-    }
-
-    .hero-content {
-        padding: 55px 18px;
-    }
-
-    .hero h2 {
-        font-size: 40px;
-    }
-
-    .services {
-        grid-template-columns: 1fr;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-group.full {
-        grid-column: auto;
-    }
-
-    .booking-box,
-    .driver-box {
-        padding: 20px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-    }
-
-    .driver-profile {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .driver-profile-icon {
-        margin: auto;
-    }
-}
 </style>
 </head>
 
 <body>
 
+
 <!-- =====================================================
-     HEADER
-     ===================================================== -->
+     AUTHENTICATION AREA
+===================================================== -->
 
-<header>
-    <div class="navbar">
+<div class="container" id="container">
 
-        <a href="#home" class="logo" style="text-decoration:none;">
-            <img src="logo.png" alt="Bothmas Shuttle Logo">
+    <!-- =============================
+         PASSENGER REGISTRATION
+    ============================== -->
 
-            <div class="logo-text">
-                <h1>Bothmas Shuttle</h1>
-                <span>SAFE • RELIABLE • ON TIME</span>
+    <div class="form-container sign-up">
+
+        <form id="registerForm">
+
+            <img src="logo.png"
+                 class="logo"
+                 alt="Bothmas Shuttle Logo">
+
+            <h1>Create Account</h1>
+
+            <span>Register as a passenger or driver</span>
+
+
+            <!-- ROLE -->
+
+            <div class="role-box">
+
+                <div class="role selected"
+                     id="passengerRole"
+                     onclick="selectRole('passenger')">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Passenger
+
+                </div>
+
+                <div class="role"
+                     id="driverRole"
+                     onclick="selectRole('driver')">
+
+                    <i class="fa-solid fa-car"></i>
+
+                    Driver
+
+                </div>
+
             </div>
-        </a>
 
-        <nav class="nav-links" id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#booking">Book</a>
-            <a href="#drivers">Drivers</a>
-            <a href="#contact">Contact</a>
-            <button class="btn btn-primary" onclick="openAuth('passenger')">
-                Passenger Login
-            </button>
-            <button class="btn btn-gold" onclick="openAuth('driver')">
-                Driver Portal
-            </button>
-        </nav>
 
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <!-- NAME -->
+
+            <input
+                type="text"
+                id="registerName"
+                placeholder="Full Name"
+                required
+            >
+
+
+            <!-- PHONE -->
+
+            <input
+                type="tel"
+                id="registerPhone"
+                placeholder="Phone Number"
+                required
+            >
+
+
+            <!-- EMAIL -->
+
+            <input
+                type="email"
+                id="registerEmail"
+                placeholder="Email Address"
+                required
+            >
+
+
+            <!-- DRIVER VEHICLE INFORMATION -->
+
+            <div id="driverFields" style="display:none;width:100%;">
+
+                <input
+                    type="text"
+                    id="vehicleName"
+                    placeholder="Vehicle Type (e.g. Toyota Quantum)"
+                >
+
+                <input
+                    type="text"
+                    id="vehicleReg"
+                    placeholder="Vehicle Registration (e.g. ABC 123 GP)"
+                >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create Password"
+                required
+            >
+
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
 
     </div>
-</header>
 
 
-<!-- =====================================================
-     HERO
-     ===================================================== -->
+    <!-- =============================
+         LOGIN
+    ============================== -->
 
-<section class="hero" id="home">
+    <div class="form-container sign-in">
 
-    <div class="hero-content">
+        <form id="loginForm">
 
-        <div>
+            <img src="logo.png"
+                 class="logo"
+                 alt="Bothmas Shuttle Logo">
 
-            <h2>
-                Your Journey.<br>
-                <span>Our Priority.</span>
-            </h2>
+            <h1>Sign In</h1>
 
-            <p>
-                Welcome to Bothmas Shuttle — providing safe,
-                reliable, comfortable and on-time transportation
-                solutions for passengers.
-            </p>
+            <div class="social-icons">
 
-            <div class="hero-buttons">
-
-                <a href="#booking" class="btn btn-gold">
-                    Book a Shuttle
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-google"></i>
                 </a>
 
-                <button class="btn btn-light" onclick="openAuth('passenger')">
-                    Passenger Login
-                </button>
-
-                <button class="btn btn-light" onclick="openAuth('driver')">
-                    Become a Driver
-                </button>
+                <a href="#" class="icon">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
 
             </div>
 
-        </div>
-
-        <div class="hero-card">
-
-            <img src="logo.png" alt="Bothmas Shuttle">
-
-            <h3>Bothmas Shuttle</h3>
-
-            <p>
-                Safe transportation connecting communities,
-                workplaces, schools, airports and destinations.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
+            <span>Use your email and password</span>
 
 
-<!-- =====================================================
-     SERVICES
-     ===================================================== -->
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Email"
+                required
+            >
 
-<section class="section" id="services">
-
-    <div class="section-heading">
-
-        <h2>Our Services</h2>
-
-        <p>
-            Transportation solutions designed around your needs.
-        </p>
-
-    </div>
-
-    <div class="services">
-
-        <div class="service">
-            <div class="service-icon">🚐</div>
-            <h3>Shuttle Trips</h3>
-            <p>
-                Comfortable scheduled transportation for individuals
-                and groups.
-            </p>
-        </div>
-
-        <div class="service">
-            <div class="service-icon">✈️</div>
-            <h3>Airport Transfers</h3>
-            <p>
-                Reliable transportation to and from airports.
-            </p>
-        </div>
-
-        <div class="service">
-            <div class="service-icon">🎓</div>
-            <h3>School Transport</h3>
-            <p>
-                Safe transportation solutions for students.
-            </p>
-        </div>
-
-        <div class="service">
-            <div class="service-icon">📦</div>
-            <h3>Parcel Delivery</h3>
-            <p>
-                Convenient transport solutions for parcels and deliveries.
-            </p>
-        </div>
-
-    </div>
-
-</section>
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password"
+                required
+            >
 
 
-<!-- =====================================================
-     ABOUT
-     ===================================================== -->
-
-<section class="about" id="about">
-
-    <div class="about-grid">
-
-        <div>
-            <img src="logo.png" alt="Bothmas Shuttle Logo">
-        </div>
-
-        <div>
-
-            <h2>About Bothmas Shuttle</h2>
-
-            <p>
-                Bothmas Shuttle is a transportation service focused
-                on providing safe, reliable and comfortable travel.
-            </p>
-
-            <p>
-                Our platform is being developed to connect passengers
-                with registered drivers and vehicles through a simple
-                digital booking system.
-            </p>
-
-            <p>
-                As the platform develops, passengers will be able to
-                request trips while registered drivers will be able to
-                manage their trips through their own driver portal.
-            </p>
-
-            <a href="#booking" class="btn btn-primary">
-                Book a Trip
+            <a href="#" onclick="forgotPassword()">
+                Forgot Your Password?
             </a>
 
-        </div>
+
+            <button type="submit">
+                Sign In
+            </button>
+
+        </form>
 
     </div>
 
-</section>
 
+    <!-- =============================
+         TOGGLE PANEL
+    ============================== -->
 
-<!-- =====================================================
-     BOOKING
-     ===================================================== -->
+    <div class="toggle-container">
 
-<section class="booking-area" id="booking">
+        <div class="toggle">
 
-    <div class="section">
+            <!-- LEFT -->
 
-        <div class="section-heading">
+            <div class="toggle-panel toggle-left">
 
-            <h2>Book Your Shuttle</h2>
-
-            <p>
-                Enter your trip information below.
-            </p>
-
-        </div>
-
-        <div class="booking-box">
-
-            <form id="bookingForm">
-
-                <div class="form-grid">
-
-                    <div class="form-group">
-                        <label>Passenger Name</label>
-                        <input
-                            type="text"
-                            id="bookingName"
-                            placeholder="Your full name"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input
-                            type="tel"
-                            id="bookingPhone"
-                            placeholder="e.g. 071 234 5678"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Pickup Location</label>
-                        <input
-                            type="text"
-                            id="pickup"
-                            placeholder="Where should we pick you up?"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Destination</label>
-                        <input
-                            type="text"
-                            id="destination"
-                            placeholder="Where are you going?"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Travel Date</label>
-                        <input
-                            type="date"
-                            id="travelDate"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Passengers</label>
-                        <select id="passengers">
-                            <option value="1">1 Passenger</option>
-                            <option value="2">2 Passengers</option>
-                            <option value="3">3 Passengers</option>
-                            <option value="4">4 Passengers</option>
-                            <option value="5">5 Passengers</option>
-                            <option value="6">6 Passengers</option>
-                            <option value="7">7 Passengers</option>
-                            <option value="8">8 Passengers</option>
-                            <option value="9">9 Passengers</option>
-                            <option value="10">10 Passengers</option>
-                            <option value="11">11 Passengers</option>
-                            <option value="12">12 Passengers</option>
-                            <option value="13">13 Passengers</option>
-                            <option value="14">14 Passengers</option>
-                            <option value="15">15 Passengers</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group full">
-                        <label>Additional Information</label>
-                        <textarea
-                            id="bookingNotes"
-                            placeholder="Any special requirements?"
-                        ></textarea>
-                    </div>
-
-                </div>
-
-                <button class="btn btn-primary" type="submit">
-                    Request Shuttle Booking
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     DRIVER REGISTRATION
-     ===================================================== -->
-
-<section class="driver-area" id="driverRegistration">
-
-    <div class="section">
-
-        <div class="section-heading">
-
-            <h2>Become a Bothmas Driver</h2>
-
-            <p>
-                Register your details and vehicle with Bothmas Shuttle.
-            </p>
-
-        </div>
-
-        <div class="driver-box">
-
-            <h3>Driver Registration</h3>
-
-            <p class="driver-note">
-                Your information will be used to create your driver
-                profile. In the next development stage this information
-                will be securely stored in the Bothmas Shuttle database.
-            </p>
-
-            <form id="driverForm">
-
-                <div class="form-grid">
-
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input
-                            type="text"
-                            id="driverName"
-                            placeholder="Driver full name"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input
-                            type="tel"
-                            id="driverPhone"
-                            placeholder="Driver phone number"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input
-                            type="email"
-                            id="driverEmail"
-                            placeholder="Driver email"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Driver Licence Number</label>
-                        <input
-                            type="text"
-                            id="driverLicence"
-                            placeholder="Licence number"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Vehicle Make & Model</label>
-                        <input
-                            type="text"
-                            id="vehicle"
-                            placeholder="e.g. Toyota Quantum"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Vehicle Registration</label>
-                        <input
-                            type="text"
-                            id="registration"
-                            placeholder="e.g. FB 88 LK GP"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label>Vehicle Capacity</label>
-
-                        <select id="capacity">
-
-                            <option value="4">4 Passengers</option>
-                            <option value="7">7 Passengers</option>
-                            <option value="10">10 Passengers</option>
-                            <option value="12">12 Passengers</option>
-                            <option value="15">15 Passengers</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label>Password</label>
-
-                        <input
-                            type="password"
-                            id="driverPassword"
-                            placeholder="Create password"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-                <button class="btn btn-primary" type="submit">
-                    Register as Driver
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     REGISTERED DRIVERS
-     ===================================================== -->
-
-<section class="section" id="drivers">
-
-    <div class="section-heading">
-
-        <h2>Our Drivers</h2>
-
-        <p>
-            Registered drivers will appear here automatically.
-        </p>
-
-    </div>
-
-    <div class="driver-list" id="driverList">
-
-        <!-- Drivers are added automatically by JavaScript -->
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT
-     ===================================================== -->
-
-<section class="contact" id="contact">
-
-    <div class="section">
-
-        <div class="section-heading">
-
-            <h2>Contact Bothmas Shuttle</h2>
-
-            <p>
-                We're here to help with your transportation needs.
-            </p>
-
-        </div>
-
-        <div class="contact-grid">
-
-            <div class="contact-card">
-
-                <h3>📞 Phone</h3>
+                <h1>Welcome Back!</h1>
 
                 <p>
-                    Contact Bothmas Shuttle
+                    Sign in to your Bothmas Shuttle
+                    account and continue your journey.
                 </p>
+
+                <button
+                    class="hidden"
+                    id="login">
+                    Sign In
+                </button>
 
             </div>
 
-            <div class="contact-card">
 
-                <h3>📧 Email</h3>
+            <!-- RIGHT -->
 
-                <p>
-                    Customer support
-                </p>
+            <div class="toggle-panel toggle-right">
 
-            </div>
-
-            <div class="contact-card">
-
-                <h3>📍 Service Area</h3>
+                <h1>Hello, Friend!</h1>
 
                 <p>
-                    Gauteng & surrounding areas
+                    Create your Bothmas Shuttle account
+                    and enjoy safe and reliable transportation.
                 </p>
 
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
-
-<footer>
-
-    <img src="logo.png" alt="Bothmas Shuttle Logo">
-
-    <h3>Bothmas Shuttle</h3>
-
-    <p>
-        Safe • Reliable • Comfortable • On Time
-    </p>
-
-    <p style="margin-top:15px;">
-        © <span id="year"></span> Bothmas Shuttle. All rights reserved.
-    </p>
-
-</footer>
-
-
-<!-- =====================================================
-     AUTH MODAL
-     ===================================================== -->
-
-<div class="modal" id="authModal">
-
-    <div class="modal-box">
-
-        <button class="close-btn" onclick="closeAuth()">
-            ×
-        </button>
-
-        <img
-            src="logo.png"
-            alt="Bothmas Shuttle"
-            style="
-                width:80px;
-                height:80px;
-                object-fit:contain;
-                display:block;
-                margin:0 auto 10px;
-            "
-        >
-
-        <h2 style="text-align:center;">
-            Bothmas Shuttle
-        </h2>
-
-        <div class="auth-tabs">
-
-            <button
-                class="auth-tab active"
-                id="passengerTab"
-                onclick="showAuthForm('passenger')"
-            >
-                Passenger
-            </button>
-
-            <button
-                class="auth-tab"
-                id="driverTab"
-                onclick="showAuthForm('driver')"
-            >
-                Driver
-            </button>
-
-        </div>
-
-
-        <!-- PASSENGER FORM -->
-
-        <div class="auth-form active" id="passengerAuth">
-
-            <form id="passengerForm">
-
-                <div class="form-group">
-
-                    <label>Full Name</label>
-
-                    <input
-                        type="text"
-                        id="passengerName"
-                        placeholder="Full name"
-                        required
-                    >
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>Phone Number</label>
-
-                    <input
-                        type="tel"
-                        id="passengerPhone"
-                        placeholder="Phone number"
-                        required
-                    >
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>Password</label>
-
-                    <input
-                        type="password"
-                        id="passengerPassword"
-                        placeholder="Password"
-                        required
-                    >
-
-                </div>
-
-                <button class="btn btn-primary" type="submit">
-                    Create Passenger Account
+                <button
+                    class="hidden"
+                    id="register">
+                    Sign Up
                 </button>
 
-            </form>
-
-        </div>
-
-
-        <!-- DRIVER FORM -->
-
-        <div class="auth-form" id="driverAuth">
-
-            <p style="
-                font-size:13px;
-                color:var(--muted);
-                margin-bottom:15px;
-            ">
-                Driver registration will create your driver profile.
-            </p>
-
-            <button
-                class="btn btn-gold"
-                style="width:100%;"
-                onclick="closeAuth(); document.getElementById('driverRegistration').scrollIntoView();"
-            >
-                Start Driver Registration
-            </button>
+            </div>
 
         </div>
 
@@ -1566,113 +687,336 @@ footer p {
 </div>
 
 
+
+<!-- =====================================================
+     PASSENGER DASHBOARD
+===================================================== -->
+
+<div class="dashboard" id="passengerDashboard">
+
+    <div class="dashboard-header">
+
+        <h2>
+            🚐 Bothmas Shuttle
+        </h2>
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+
+        </button>
+
+    </div>
+
+
+    <div class="dashboard-content">
+
+        <div class="welcome-card">
+
+            <h1>
+                Welcome, <span id="passengerName"></span>!
+            </h1>
+
+            <p>
+                Where would you like to travel today?
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+
+            <div class="dashboard-card"
+                 onclick="bookRide()">
+
+                <i class="fa-solid fa-car"></i>
+
+                <h3>Book a Ride</h3>
+
+                <p>
+                    Request a Bothmas Shuttle
+                    from your pickup location
+                    to your destination.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h3>Track Ride</h3>
+
+                <p>
+                    Track your driver's trip
+                    once your booking has been accepted.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                <h3>My Trips</h3>
+
+                <p>
+                    View your previous and
+                    current shuttle trips.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-wallet"></i>
+
+                <h3>Payments</h3>
+
+                <p>
+                    Manage your payments and
+                    Bothmas Shuttle wallet.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <h3>Notifications</h3>
+
+                <p>
+                    Receive updates about
+                    bookings and trips.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-user"></i>
+
+                <h3>My Profile</h3>
+
+                <p>
+                    View and manage your
+                    passenger information.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 <!-- =====================================================
      DRIVER DASHBOARD
-     ===================================================== -->
+===================================================== -->
 
 <div class="dashboard" id="driverDashboard">
 
     <div class="dashboard-header">
 
-        <div class="brand">
-
-            <img src="logo.png" alt="Bothmas Shuttle">
-
-            <strong>Bothmas Shuttle Driver</strong>
-
-        </div>
+        <h2>
+            🚐 Bothmas Shuttle — Driver
+        </h2>
 
         <button
-            class="btn btn-light"
-            onclick="closeDriverDashboard()"
-        >
-            Close
+            class="logout-btn"
+            onclick="logout()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+
         </button>
 
     </div>
 
+
     <div class="dashboard-content">
 
-        <div class="dashboard-title">
+        <div class="welcome-card">
 
-            <h2>Driver Dashboard</h2>
+            <h1>
+                Welcome, <span id="driverName"></span>!
+            </h1>
 
-            <p style="color:var(--muted);">
-                Manage your Bothmas Shuttle driver profile.
+            <p>
+                Your driver dashboard
             </p>
 
         </div>
 
-        <div class="stats">
 
-            <div class="stat">
+        <!-- DRIVER INFORMATION -->
 
-                <small>Status</small>
+        <div class="driver-info">
 
-                <h3>Pending</h3>
+            <h2 style="margin-bottom:15px;">
+                Driver Information
+            </h2>
+
+
+            <div>
+
+                <strong>
+                    Driver:
+                </strong>
+
+                <span id="driverInfoName"></span>
 
             </div>
 
-            <div class="stat">
 
-                <small>Trips</small>
+            <div>
 
-                <h3>0</h3>
+                <strong>
+                    Phone:
+                </strong>
+
+                <span id="driverInfoPhone"></span>
 
             </div>
 
-            <div class="stat">
 
-                <small>Rating</small>
+            <div>
 
-                <h3>—</h3>
+                <strong>
+                    Vehicle:
+                </strong>
+
+                <span id="driverInfoVehicle"></span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Registration:
+                </strong>
+
+                <span id="driverInfoReg"></span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Status:
+                </strong>
+
+                <span style="color:green;font-weight:bold;">
+                    Available
+                </span>
 
             </div>
 
         </div>
 
-        <div class="dashboard-card">
 
-            <h3>Driver Profile</h3>
+        <div class="dashboard-grid"
+             style="margin-top:25px;">
 
-            <div class="driver-profile">
 
-                <div class="driver-profile-icon">
-                    🚐
-                </div>
+            <div class="dashboard-card">
 
-                <div>
+                <i class="fa-solid fa-road"></i>
 
-                    <h2 id="dashboardDriverName">
-                        Driver
-                    </h2>
+                <h3>My Trips</h3>
 
-                    <p id="dashboardDriverVehicle">
-                        Vehicle information
-                    </p>
-
-                    <p id="dashboardDriverRegistration">
-                        Registration
-                    </p>
-
-                    <span class="status pending">
-                        Awaiting Approval
-                    </span>
-
-                </div>
+                <p>
+                    View your assigned passenger
+                    trips and routes.
+                </p>
 
             </div>
 
-        </div>
 
-        <div class="dashboard-card">
+            <div class="dashboard-card">
 
-            <h3>Trip Management</h3>
+                <i class="fa-solid fa-user-group"></i>
 
-            <p style="color:var(--muted);">
-                Your assigned passenger bookings will appear here
-                once the driver system is connected to the database.
-            </p>
+                <h3>Passengers</h3>
+
+                <p>
+                    View passengers assigned
+                    to your current trip.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+
+                <h3>Live Trip</h3>
+
+                <p>
+                    Start and manage live
+                    trip tracking.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                <h3>Earnings</h3>
+
+                <p>
+                    View your completed trips
+                    and earnings.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-car"></i>
+
+                <h3>Vehicle</h3>
+
+                <p>
+                    Manage your vehicle
+                    information.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <i class="fa-solid fa-power-off"></i>
+
+                <h3>Driver Status</h3>
+
+                <p>
+                    You are currently
+                    available for trips.
+                </p>
+
+            </div>
+
 
         </div>
 
@@ -1681,481 +1025,413 @@ footer p {
 </div>
 
 
-<!-- =====================================================
-     TOAST
-     ===================================================== -->
-
-<div class="toast" id="toast"></div>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
 
 <script>
 
-/* =========================================================
-   BASIC FUNCTIONS
-   ========================================================= */
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-
-function toggleMenu() {
-
-    document
-        .getElementById("navLinks")
-        .classList.toggle("open");
-
-}
+let selectedRole = "passenger";
 
 
-/* =========================================================
-   TOAST MESSAGE
-   ========================================================= */
+/* =====================================================
+   LOGIN / REGISTER ANIMATION
+===================================================== */
 
-function showToast(message) {
+const container =
+document.getElementById("container");
 
-    const toast = document.getElementById("toast");
+const registerButton =
+document.getElementById("register");
 
-    toast.textContent = message;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    }, 3500);
-
-}
+const loginButton =
+document.getElementById("login");
 
 
-/* =========================================================
-   AUTH MODAL
-   ========================================================= */
+registerButton.addEventListener("click", () => {
 
-function openAuth(type) {
+    container.classList.add("active");
 
-    document
-        .getElementById("authModal")
-        .classList.add("active");
-
-    showAuthForm(type);
-
-}
+});
 
 
-function closeAuth() {
+loginButton.addEventListener("click", () => {
 
-    document
-        .getElementById("authModal")
-        .classList.remove("active");
+    container.classList.remove("active");
 
-}
+});
 
 
-function showAuthForm(type) {
+/* =====================================================
+   SELECT PASSENGER / DRIVER
+===================================================== */
 
-    const passengerForm =
-        document.getElementById("passengerAuth");
+function selectRole(role){
 
-    const driverForm =
-        document.getElementById("driverAuth");
+    selectedRole = role;
 
-    const passengerTab =
-        document.getElementById("passengerTab");
 
-    const driverTab =
-        document.getElementById("driverTab");
+    const passenger =
+    document.getElementById("passengerRole");
 
-    passengerForm.classList.remove("active");
-    driverForm.classList.remove("active");
+    const driver =
+    document.getElementById("driverRole");
 
-    passengerTab.classList.remove("active");
-    driverTab.classList.remove("active");
+    const driverFields =
+    document.getElementById("driverFields");
 
-    if (type === "driver") {
 
-        driverForm.classList.add("active");
-        driverTab.classList.add("active");
+    passenger.classList.remove("selected");
 
-    } else {
+    driver.classList.remove("selected");
 
-        passengerForm.classList.add("active");
-        passengerTab.classList.add("active");
+
+    if(role === "passenger"){
+
+        passenger.classList.add("selected");
+
+        driverFields.style.display = "none";
+
+    }
+
+
+    if(role === "driver"){
+
+        driver.classList.add("selected");
+
+        driverFields.style.display = "block";
 
     }
 
 }
 
 
-/* =========================================================
-   PASSENGER REGISTRATION
-   ========================================================= */
+/* =====================================================
+   REGISTER
+===================================================== */
 
 document
-    .getElementById("passengerForm")
-    .addEventListener("submit", function(event) {
+.getElementById("registerForm")
+.addEventListener("submit", function(e){
 
-        event.preventDefault();
-
-        const name =
-            document.getElementById("passengerName").value;
-
-        const phone =
-            document.getElementById("passengerPhone").value;
-
-        localStorage.setItem(
-            "bothmasPassenger",
-            JSON.stringify({
-                name: name,
-                phone: phone
-            })
-        );
-
-        closeAuth();
-
-        showToast(
-            "Passenger account created successfully."
-        );
-
-        document.getElementById("bookingName").value = name;
-
-        document.getElementById("bookingPhone").value = phone;
-
-    });
+    e.preventDefault();
 
 
-/* =========================================================
-   DRIVER REGISTRATION
-   ========================================================= */
+    const name =
+    document.getElementById("registerName").value.trim();
 
-document
-    .getElementById("driverForm")
-    .addEventListener("submit", function(event) {
+    const phone =
+    document.getElementById("registerPhone").value.trim();
 
-        event.preventDefault();
+    const email =
+    document.getElementById("registerEmail").value.trim();
 
-        const driver = {
-
-            id: Date.now(),
-
-            name:
-                document.getElementById("driverName").value,
-
-            phone:
-                document.getElementById("driverPhone").value,
-
-            email:
-                document.getElementById("driverEmail").value,
-
-            licence:
-                document.getElementById("driverLicence").value,
-
-            vehicle:
-                document.getElementById("vehicle").value,
-
-            registration:
-                document.getElementById("registration").value,
-
-            capacity:
-                document.getElementById("capacity").value,
-
-            status:
-                "Pending"
-
-        };
+    const password =
+    document.getElementById("registerPassword").value;
 
 
-        let drivers =
-            JSON.parse(
-                localStorage.getItem("bothmasDrivers")
-            ) || [];
+    if(!name || !phone || !email || !password){
 
-
-        drivers.push(driver);
-
-
-        localStorage.setItem(
-            "bothmasDrivers",
-            JSON.stringify(drivers)
-        );
-
-
-        displayDrivers();
-
-
-        document
-            .getElementById("driverForm")
-            .reset();
-
-
-        document
-            .getElementById("dashboardDriverName")
-            .textContent = driver.name;
-
-
-        document
-            .getElementById("dashboardDriverVehicle")
-            .textContent =
-            driver.vehicle +
-            " • " +
-            driver.capacity +
-            " passengers";
-
-
-        document
-            .getElementById("dashboardDriverRegistration")
-            .textContent =
-            "Registration: " +
-            driver.registration;
-
-
-        showToast(
-            "Driver registration submitted successfully."
-        );
-
-
-        document
-            .getElementById("driverDashboard")
-            .classList.add("active");
-
-    });
-
-
-/* =========================================================
-   DISPLAY REGISTERED DRIVERS
-   ========================================================= */
-
-function displayDrivers() {
-
-    const container =
-        document.getElementById("driverList");
-
-    let drivers =
-        JSON.parse(
-            localStorage.getItem("bothmasDrivers")
-        ) || [];
-
-
-    container.innerHTML = "";
-
-
-    if (drivers.length === 0) {
-
-        container.innerHTML = `
-
-            <div class="driver-card">
-
-                <div class="driver-avatar">
-                    🚐
-                </div>
-
-                <h3>Driver Registration Open</h3>
-
-                <p>
-                    Registered Bothmas Shuttle drivers
-                    will appear here.
-                </p>
-
-                <span class="status pending">
-                    No drivers registered yet
-                </span>
-
-            </div>
-
-        `;
+        alert("Please complete all required fields.");
 
         return;
 
     }
 
 
-    drivers.forEach(driver => {
+    /* DRIVER */
 
-        const card =
-            document.createElement("div");
+    if(selectedRole === "driver"){
 
-        card.className = "driver-card";
+        const vehicle =
+        document.getElementById("vehicleName").value.trim();
 
-        card.innerHTML = `
-
-            <div class="driver-avatar">
-                🚐
-            </div>
-
-            <h3>${escapeHTML(driver.name)}</h3>
-
-            <p>
-                <strong>Vehicle:</strong>
-                ${escapeHTML(driver.vehicle)}
-            </p>
-
-            <p>
-                <strong>Registration:</strong>
-                ${escapeHTML(driver.registration)}
-            </p>
-
-            <p>
-                <strong>Capacity:</strong>
-                ${escapeHTML(driver.capacity)}
-                passengers
-            </p>
-
-            <span class="status pending">
-                ${escapeHTML(driver.status)}
-            </span>
-
-        `;
-
-        container.appendChild(card);
-
-    });
-
-}
+        const vehicleReg =
+        document.getElementById("vehicleReg").value.trim();
 
 
-/* =========================================================
-   SECURITY HELPER
-   ========================================================= */
+        if(!vehicle || !vehicleReg){
 
-function escapeHTML(value) {
+            alert(
+                "Drivers must enter their vehicle details."
+            );
 
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+            return;
 
-}
+        }
 
 
-/* =========================================================
-   DRIVER DASHBOARD
-   ========================================================= */
+        const driver = {
 
-function closeDriverDashboard() {
+            role:"driver",
 
-    document
-        .getElementById("driverDashboard")
-        .classList.remove("active");
+            name:name,
 
-}
+            phone:phone,
 
+            email:email,
 
-/* =========================================================
-   BOOKING
-   ========================================================= */
+            password:password,
 
-document
-    .getElementById("bookingForm")
-    .addEventListener("submit", function(event) {
+            vehicle:vehicle,
 
-        event.preventDefault();
-
-        const booking = {
-
-            id: "BS-" + Date.now(),
-
-            passenger:
-                document.getElementById("bookingName").value,
-
-            phone:
-                document.getElementById("bookingPhone").value,
-
-            pickup:
-                document.getElementById("pickup").value,
-
-            destination:
-                document.getElementById("destination").value,
-
-            date:
-                document.getElementById("travelDate").value,
-
-            passengers:
-                document.getElementById("passengers").value,
-
-            notes:
-                document.getElementById("bookingNotes").value,
-
-            status:
-                "Requested"
+            vehicleReg:vehicleReg
 
         };
 
 
-        let bookings =
-            JSON.parse(
-                localStorage.getItem("bothmasBookings")
-            ) || [];
+        localStorage.setItem(
+            "bothmasDriver",
+            JSON.stringify(driver)
+        );
 
 
-        bookings.push(booking);
+        alert(
+            "Driver registration successful!"
+        );
+
+    }
+
+
+    /* PASSENGER */
+
+    else{
+
+        const passenger = {
+
+            role:"passenger",
+
+            name:name,
+
+            phone:phone,
+
+            email:email,
+
+            password:password
+
+        };
 
 
         localStorage.setItem(
-            "bothmasBookings",
-            JSON.stringify(bookings)
+            "bothmasPassenger",
+            JSON.stringify(passenger)
         );
 
 
-        showToast(
-            "Booking request submitted. Reference: " +
-            booking.id
+        alert(
+            "Passenger registration successful!"
         );
 
-
-        document
-            .getElementById("bookingForm")
-            .reset();
-
-    });
+    }
 
 
-/* =========================================================
-   LOAD STORED DATA
-   ========================================================= */
+    /* GO TO LOGIN */
 
-displayDrivers();
+    container.classList.remove("active");
 
+    document.getElementById("registerForm").reset();
 
-/* =========================================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
-   ========================================================= */
+    selectRole("passenger");
 
-document
-    .getElementById("authModal")
-    .addEventListener("click", function(event) {
-
-        if (event.target === this) {
-
-            closeAuth();
-
-        }
-
-    });
+});
 
 
-/* =========================================================
-   MOBILE NAV CLOSE
-   ========================================================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
 document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
+.getElementById("loginForm")
+.addEventListener("submit", function(e){
 
-        link.addEventListener("click", () => {
+    e.preventDefault();
 
-            document
-                .getElementById("navLinks")
-                .classList.remove("open");
 
-        });
+    const email =
+    document.getElementById("loginEmail").value.trim();
 
-    });
+    const password =
+    document.getElementById("loginPassword").value;
+
+
+    const passenger =
+    JSON.parse(
+        localStorage.getItem("bothmasPassenger")
+    );
+
+
+    const driver =
+    JSON.parse(
+        localStorage.getItem("bothmasDriver")
+    );
+
+
+    /* CHECK DRIVER */
+
+    if(
+        driver &&
+        driver.email === email &&
+        driver.password === password
+    ){
+
+        showDriverDashboard(driver);
+
+        return;
+
+    }
+
+
+    /* CHECK PASSENGER */
+
+    if(
+        passenger &&
+        passenger.email === email &&
+        passenger.password === password
+    ){
+
+        showPassengerDashboard(passenger);
+
+        return;
+
+    }
+
+
+    alert(
+        "Incorrect email or password."
+    );
+
+});
+
+
+/* =====================================================
+   PASSENGER DASHBOARD
+===================================================== */
+
+function showPassengerDashboard(passenger){
+
+    document
+    .getElementById("container")
+    .style.display = "none";
+
+
+    document
+    .getElementById("driverDashboard")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("passengerDashboard")
+    .classList.add("active");
+
+
+    document
+    .getElementById("passengerName")
+    .innerText = passenger.name;
+
+}
+
+
+/* =====================================================
+   DRIVER DASHBOARD
+===================================================== */
+
+function showDriverDashboard(driver){
+
+    document
+    .getElementById("container")
+    .style.display = "none";
+
+
+    document
+    .getElementById("passengerDashboard")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("driverDashboard")
+    .classList.add("active");
+
+
+    document
+    .getElementById("driverName")
+    .innerText = driver.name;
+
+
+    document
+    .getElementById("driverInfoName")
+    .innerText = driver.name;
+
+
+    document
+    .getElementById("driverInfoPhone")
+    .innerText = driver.phone;
+
+
+    document
+    .getElementById("driverInfoVehicle")
+    .innerText = driver.vehicle;
+
+
+    document
+    .getElementById("driverInfoReg")
+    .innerText = driver.vehicleReg;
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    document
+    .getElementById("passengerDashboard")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("driverDashboard")
+    .classList.remove("active");
+
+
+    document
+    .getElementById("container")
+    .style.display = "block";
+
+
+    document
+    .getElementById("loginForm")
+    .reset();
+
+}
+
+
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
+
+function forgotPassword(){
+
+    alert(
+        "Password recovery will be connected to the Bothmas Shuttle account system in the next step."
+    );
+
+}
+
+
+/* =====================================================
+   BOOK RIDE
+===================================================== */
+
+function bookRide(){
+
+    alert(
+        "Ride booking system will be added in the next step."
+    );
+
+}
 
 </script>
 
