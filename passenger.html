@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passenger Dashboard - Bothmas Shuttle</title>
+<link rel="stylesheet" href="passenger.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <img src="logo.png" alt="Bothmas Shuttle Logo">
+    <div><strong>Bothmas Shuttle</strong><span>Passenger</span></div>
+  </div>
+  <div class="user-area">
+    <span id="header-user">Passenger</span>
+    <button class="logout-btn" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+  </div>
+</header>
+
+<main class="dashboard">
+  <section class="welcome">
+    <div>
+      <p class="eyebrow">PASSENGER DASHBOARD</p>
+      <h1>Where are you going?</h1>
+      <p>Book a Bothmas Shuttle ride quickly and securely.</p>
+    </div>
+    <div class="online-pill"><span></span> Service available</div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="card-heading">
+        <div class="icon-box"><i class="fa-solid fa-car-side"></i></div>
+        <div><h2>Book a Ride</h2><p>Enter your trip details below.</p></div>
+      </div>
+
+      <form id="ride-form">
+        <label for="pickup">Pickup location</label>
+        <div class="input-wrap"><i class="fa-solid fa-location-dot"></i>
+          <input id="pickup" type="text" placeholder="e.g. Mandela Village" required>
+        </div>
+        <button type="button" class="location-btn" id="use-location">
+          <i class="fa-solid fa-crosshairs"></i> Use my current location
+        </button>
+
+        <label for="destination">Destination</label>
+        <div class="input-wrap"><i class="fa-solid fa-flag-checkered"></i>
+          <input id="destination" type="text" placeholder="e.g. Hammanskraal Station" required>
+        </div>
+
+        <label for="distance">Estimated distance</label>
+        <div class="distance-row">
+          <div class="input-wrap"><i class="fa-solid fa-road"></i>
+            <input id="distance" type="number" min="1" max="200" step="0.1" value="10" required>
+          </div><span>km</span>
+        </div>
+
+        <div class="fare-box">
+          <div><span>Estimated fare</span><small>Prototype estimate</small></div>
+          <strong id="fare">R105.00</strong>
+        </div>
+
+        <button class="primary-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i> Find a Driver
+        </button>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="card-heading">
+        <div class="icon-box"><i class="fa-solid fa-route"></i></div>
+        <div><h2>Ride Status</h2><p id="status-subtitle">No active ride</p></div>
+      </div>
+
+      <div id="empty-status" class="empty-state">
+        <i class="fa-solid fa-car"></i>
+        <h3>No active ride</h3>
+        <p>Your ride status will appear here after you request a driver.</p>
+      </div>
+
+      <div id="active-ride" class="hidden">
+        <div class="status-badge" id="status-badge">
+          <span class="status-dot"></span><span id="status-text">Searching for a driver...</span>
+        </div>
+
+        <div class="route">
+          <div class="route-point"><span class="dot pickup-dot"></span><div><small>Pickup</small><strong id="status-pickup">-</strong></div></div>
+          <div class="route-line"></div>
+          <div class="route-point"><span class="dot destination-dot"></span><div><small>Destination</small><strong id="status-destination">-</strong></div></div>
+        </div>
+
+        <div id="driver-panel" class="driver-panel hidden">
+          <div class="driver-avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="driver-info">
+            <strong id="driver-name">Driver</strong>
+            <span id="driver-car">Vehicle</span>
+            <span id="driver-rating">★ 4.9</span>
+          </div>
+          <div class="eta"><strong id="driver-eta">5 min</strong><span>ETA</span></div>
+        </div>
+
+        <div class="progress">
+          <div class="progress-step active" id="step-search"><span>1</span><small>Searching</small></div>
+          <div class="progress-line" id="line-1"></div>
+          <div class="progress-step" id="step-driver"><span>2</span><small>Driver found</small></div>
+          <div class="progress-line" id="line-2"></div>
+          <div class="progress-step" id="step-trip"><span>3</span><small>On trip</small></div>
+          <div class="progress-line" id="line-3"></div>
+          <div class="progress-step" id="step-complete"><span>4</span><small>Complete</small></div>
+        </div>
+
+        <div class="ride-actions">
+          <button class="secondary-btn hidden" id="start-trip">Start Trip</button>
+          <button class="secondary-btn hidden" id="complete-trip">Complete Ride</button>
+          <button class="danger-btn" id="cancel-ride">Cancel Ride</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-grid">
+    <div class="mini-card"><i class="fa-solid fa-shield-halved"></i><div><strong>Ride safely</strong><p>Confirm your driver and vehicle before entering.</p></div></div>
+    <div class="mini-card"><i class="fa-solid fa-wallet"></i><div><strong>Fare estimate</strong><p>Fare is estimated from the distance entered.</p></div></div>
+    <div class="mini-card"><i class="fa-solid fa-headset"></i><div><strong>Need help?</strong><p>Contact Bothmas Shuttle support for assistance.</p></div></div>
+  </section>
+</main>
+<script src="passenger.js"></script>
+</body>
+</html>
